@@ -1,0 +1,44 @@
+{% extends "base.html"%}
+{%load static%}
+{% block css_files %}
+<link rel="stylesheet" href="{%static 'css/style.css'%}">
+{% endblock %}
+
+{% block title%} LOGİN {% endblock %}
+{%block content%}
+   <div class="container mt-5 ">
+    <div class="col-6 ">
+      <h1> LOGIN </h1>
+        <hr>
+   <form action="{% url 'login' %}" method="POST" >
+
+        {% csrf_token %}
+
+        {% if error %}
+            <div class="alert alert-danger">
+            {{ error }}
+            </div>
+       {% endif %}
+
+
+        <div class="mb-3">
+            <label for="username" class="form-label"> UserName</label>
+            <input type="text" class="form-control" name="username">
+        </div>
+
+         <div class="mb-3">
+            <label for="password" class="form-label"> Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+            <input type="submit" value="login" class="btn btn-primary">
+     </form>
+
+
+     </div>
+    </div>
+
+{% endblock %}
+
+{% block js_files%}
+    <script src="{%static '/js'%}"></script>
+{% endblock %}

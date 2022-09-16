@@ -1,0 +1,53 @@
+{% extends "base.html"%}
+{%load static%}
+{% block css_files %}
+<link rel="stylesheet" href="{%static 'css/style.css'%}">
+{% endblock %}
+
+{% block title%} REGISTER {% endblock %}
+{%block content%}
+   <div class="container mt-5 ">
+    
+            <h1> REGISTER </h1>
+   <hr>
+  <form action="{% url 'register' %}" method="POST" >
+
+        {% csrf_token %}
+
+        {% if error %}
+            <div class="alert alert-danger">
+            {{ error }}
+            </div>
+       {% endif %}
+
+
+        <div class="mb-3">
+            <label for="username" class="form-label"> UserName</label>
+            <input type="text" class="form-control" name="username" value="{{ username }}">
+        </div>
+
+     <div class="mb-3">
+            <label for="email" class="form-label"> Mail </label>
+            <input type="text" class="form-control" name="email" value="{{ email }}">
+        </div>
+
+         <div class="mb-3">
+            <label for="password" class="form-label"> Password</label>
+            <input type="password" class="form-control" name="password" >
+        </div>
+
+    <div class="mb-3">
+            <label for="repassword" class="form-label"> Password Again </label>
+            <input type="password" class="form-control" name="repassword" >
+        </div>
+
+            <input type="submit" value="login" class="btn btn-primary">
+     </form>
+
+    </div>
+
+{% endblock %}
+
+{% block js_files%}
+    <script src="{%static '/js'%}"></script>
+{% endblock %}
